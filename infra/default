@@ -1,0 +1,28 @@
+server {
+    listen 80;
+    server_name projectyaptask.zapto.org;
+
+    root /var/www/kittygram;
+    index index.html;
+
+    location /static/ {
+        alias /var/www/kittygram/static/;
+    }
+
+    location /media/ {
+        alias /var/www/kittygram/media/;
+    }
+
+    location / {
+        proxy_pass http://127.0.0.1:8080;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    client_max_body_size 20M;
+
+    access_log /var/log/nginx/kittygram_access.log;
+    error_log /var/log/nginx/kittygram_error.log;
+}

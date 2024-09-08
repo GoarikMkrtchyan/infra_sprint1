@@ -1,0 +1,5 @@
+IP: 89.169.174.201;
+name_taski: https://projectyaptask.zapto.org;
+name_kittygram: https://projectyaptask.zapto.org;
+login: gog46;
+password: Mg27082003;

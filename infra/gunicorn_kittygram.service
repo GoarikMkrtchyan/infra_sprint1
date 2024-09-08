@@ -1,0 +1,11 @@
+[Unit]
+Description=gunicorn daemon for Kittygram
+After=network.target
+
+[Service]
+User=yc-user
+WorkingDirectory=/home/yc-user/infra_sprint1/backend
+ExecStart=/home/yc-user/.local/bin/gunicorn --workers 3 --bind unix:/home/yc-user/infra_sprint1/kittygram_backend.sock backend.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
